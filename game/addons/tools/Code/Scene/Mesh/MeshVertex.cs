@@ -25,11 +25,5 @@ public struct MeshVertex : IMeshElement
 	}
 
 	public readonly override int GetHashCode() => HashCode.Combine( Component, nameof( MeshVertex ), Handle );
-	public override readonly string ToString()
-	{
-		if ( !IsValid ) return "Invalid Vertex";
-
-		var objectName = Component.GameObject?.Name ?? "<no object>";
-		return $"{objectName} Vertex #{HandleIndex}";
-	}
+	public override readonly string ToString() => IsValid ? $"{Component.GameObject.Name} Vertex {Handle}" : "Invalid Vertex";
 }
